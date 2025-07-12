@@ -3,104 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raksha Bandhan Special Offer!</title>
+    <title>Raksha Bandhan Grand Offer!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="description" content="Spin the wheel and get exciting Raksha Bandhan shopping vouchers! Limited time offer.">
-    <meta name="keywords" content="Raksha Bandhan, vouchers, shopping, offer, discount, spin wheel, Flipkart, Myntra, Ajio, festival">
-    <meta name="author" content="Your Name/Company">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/index.html"> <meta property="og:title" content="Raksha Bandhan Special: Spin to Win Vouchers!">
-    <meta property="og:description" content="Don't miss out! Get assured shopping vouchers worth ₹50 to ₹500 for Raksha Bandhan. Limited stock!">
-    <meta property="og:image" content="https://yourwebsite.com/images/rakhi_banner.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourwebsite.com/index.html"> <meta property="twitter:title" content="Raksha Bandhan Special: Spin to Win Vouchers!">
-    <meta property="twitter:description" content="Don't miss out! Get assured shopping vouchers worth ₹50 to ₹500 for Raksha Bandhan. Limited stock!">
-    <meta property="twitter:image" content="https://yourwebsite.com/images/rakhi_banner.jpg"> </head>
+</head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎁 Raksha Bandhan Festival Special! 🎉</h1>
-            <p>Don't miss this limited-time offer!</p>
-            <p class="countdown-text">Offer Ends in: <span id="countdown">Loading...</span></p>
-        </header>
+    <header class="hero-banner">
+        <h1>🎉 Raksha Bandhan Mega Deal! 🎉</h1>
+        <p class="subtitle">Your chance to win a FREE Shopping Voucher up to ₹500!</p>
+        <img src="https://i.ibb.co/wZ7gfSFY/Raksha-Bandhan-1101533113.png" alt="Raksha Bandhan Offer" class="festival-img">
+        <p class="image-attribution">Image by <a href="https://www.freepixel.com" target="_blank">Freepixel</a></p>
+    </header>
 
-        <section class="info-section">
-            <div class="voucher-status" id="voucherSection">
-                <i class="fas fa-ticket-alt"></i> Total Vouchers Claimed: <span id="voucherStatus">Loading...</span>
-            </div>
-            <p class="regret-message hidden" id="regretMessage">
-                <i class="fas fa-exclamation-triangle"></i> Oh no! All vouchers for today have been claimed. Check back tomorrow!
-            </p>
+    <main class="container">
+        <section class="urgency-section">
+            <h2>Offer Ends In:</h2>
+            <div id="countdown" class="countdown"></div>
+            <p class="voucher-status" id="voucherStatus"></p>
         </section>
 
-        <section class="action-section" id="waChannelSection">
-            <h2>Step 1: Join Our WhatsApp Channel</h2>
-            <p>Join our official WhatsApp channel to unlock the next step.</p>
-            <button id="whatsappChannelBtn" class="btn primary-btn"><i class="fab fa-whatsapp"></i> Join WhatsApp Channel</button>
-        </section>
-
-        <section class="action-section hidden" id="tgChannelSection">
-            <h2>Step 2: Join Our Telegram Channel</h2>
-            <p>Join our Telegram channel to unlock the sharing step.</p>
-            <button id="telegramChannelBtn" class="btn primary-btn"><i class="fab fa-telegram-plane"></i> Join Telegram Channel</button>
-        </section>
-
-        <section class="action-section hidden" id="shareLockSection">
-            <h2>Step 3: Share with Friends & Family!</h2>
-            <p>Share this exciting offer with <span class="highlight">5 friends/groups on WhatsApp</span> to unlock the next step.</p>
-            <p class="share-count" id="shareCountDisplay">Shares: 0/5</p>
-            <p class="share-timer-message" id="shareTimerMessage">Click to Share!</p>
-            <button id="whatsappShareButton" class="btn primary-btn"><i class="fab fa-whatsapp"></i> Share on WhatsApp</button>
-        </section>
-
-        <section class="action-section hidden" id="directLinkSection">
-            <h2>Step 4: Visit Our Partner Site</h2>
-            <p>Visit our partner's website for at least <span id="visitTimeRequiredDisplay">30</span> seconds to unlock the Spin Wheel!</p>
-            <p class="visit-timer-message hidden" id="visitSiteTimerDisplay">
-                Time remaining: <span class="countdown-timer" id="visitSiteCountdown"></span>s
-            </p>
-            <button id="visitSiteButton" class="btn primary-btn">Click to Visit Site & Unlock Spin</button>
-        </section>
-
-        <section class="action-section hidden" id="spinWheelContainer">
-            <h2 id="spinWheelTitle">It's Your Lucky Spin!</h2>
-            <div class="wheel-container">
-                <canvas id="spinWheelCanvas" width="300" height="300"></canvas>
-                <button id="spinButton" class="btn primary-btn spin-btn"><i class="fas fa-hand-pointer"></i> Spin Now!</button>
-            </div>
-            <p class="spin-result" id="spinResult"></p>
-
-            <div class="cooldown-message hidden" id="spinCooldownMessage">
-                <p>You can spin again in: <span id="spinCooldownTimerMain"></span></p>
-            </div>
-
-            <div class="message-box no-win hidden" id="noWinMessage">
-                <h3><i class="fas fa-sad-tear"></i> Better Luck Next Time!</h3>
-                <p>Unfortunately, you didn't win a voucher this time.</p>
-                <p>Don't worry, you can try again tomorrow!</p>
-                <p class="cooldown-instruction hidden">Come back in: <span id="spinCooldownTimerApology"></span></p>
-            </div>
-
-            <div class="message-box winner hidden" id="winnerSection">
-                <h3><i class="fas fa-gift"></i> Congratulations! You Won!</h3>
-                <p>Your exclusive Raksha Bandhan shopping voucher code:</p>
-                <div class="code-container">
-                    <input type="text" id="secretCode" readonly>
-                    <button id="copyCodeBtn" class="btn copy-btn"><i class="fas fa-copy"></i> Copy Code</button>
+        <section class="affiliate-section">
+            <h2>🛍️ Shop Our Exclusive Partners!</h2>
+            <div class="affiliate-grid">
+                <a href="https://fktr.in/iat308u" target="_blank" class="affiliate-button flipkart">
+                    <span>Flipkart</span>
+                </a>
+                <a href="https://ajiio.in/10aTSBR" target="_blank" class="affiliate-button ajio">
+                    <span>Ajio</span>
+                </a>
+                <a href="https://myntr.it/D45LwhZ" target="_blank" class="affiliate-button myntra">
+                    <span>Myntra</span>
+                </a>
+                <a href="https://bitli.in/1iGCq59" target="_blank" class="affiliate-button shopsy">
+                    <span>Shopsy</span>
+                </a>
+                <a href="https://bitli.in/1xbW8Gg" target="_blank" class="affiliate-button buykaro">
+                    <span>Buykaro</span>
+                </a>
+                <a href="https://bitli.in/4WpDZr6" target="_blank" class="affiliate-button myeazyloan">
+                    <span>Myeazyloan</span>
+                </a>
+                <a href="https://bitli.in/qGb2wRt" target="_blank" class="affiliate-button reliance-digital">
+                    <span>Reliance Digital</span>
+                </a>
+                <a href="https://bitli.in/bkLpt2P" target="_blank" class="affiliate-button dot-key">
+                    <span>Dot & Key Store</span>
+                </a>
+                <a href="https://bitli.in/bDxWlSX" target="_blank" class="affiliate-button bold-care">
+                    <span>Bold Care</span>
+                </a>
+                <a href="https://bitli.in/K4KaDwd" target="_blank" class="affiliate-button kiro-beauty">
+                    <span>Kiro Beauty</span>
+                </a>
+                <a href="https://bitli.in/971fs7V" target="_blank" class="affiliate-button kapiva">
+                    <span>Kapiva</span>
+                </a>
                 </div>
-                <p class="redeem-instruction">
-                    Click here to redeem your voucher on Telegram:
-                    <a id="telegramSubmitLink" href="#" target="_blank" class="btn telegram-link-btn"><i class="fab fa-telegram-plane"></i> Redeem Now!</a>
-                </p>
-                <p class="cooldown-instruction hidden">You can spin again tomorrow! Come back in: <span id="spinCooldownTimerWinner"></span></p>
+            <a href="https://otieu.com/4/9557352" target="_blank" class="cta-button direct-ad-button">
+                ✨ Explore More Exclusive Deals!
+            </a>
+        </section>
+
+        <section class="social-channels">
+            <h2>Stay Connected & Never Miss a Deal!</h2>
+            <div class="channel-buttons">
+                <a id="whatsappChannelBtn" href="https://whatsapp.com/channel/0029Vb65NV7J3juzfFruXH1v" target="_blank" class="cta-button whatsapp-channel-btn">
+                    <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
+                </a>
+                <a id="telegramChannelBtn" href="https://t.me/severdealshub" target="_blank" class="cta-button telegram-channel-btn" disabled>
+                    <i class="fab fa-telegram-plane"></i> Join Telegram Channel
+                </a>
             </div>
         </section>
 
-        <footer>
-            <p>&copy; 2025 Raksha Bandhan Offer. All rights reserved.</p>
-        </footer>
-    </div>
+        <section id="voucherSection" class="voucher-section">
+            <h2>🎁 Unlock Your Free Shopping Voucher!</h2>
+
+            <div id="waChannelSection">
+                <p class="instruction-heading">Step 1: Join Our WhatsApp Channel</p>
+                <p>Click the button below to join our WhatsApp Channel and proceed to the next step.</p>
+            </div>
+
+            <div id="tgChannelSection" class="hidden">
+                <p class="instruction-heading">Step 2: Join Our Telegram Channel</p>
+                <p>Click the button below to join our Telegram Channel and unlock the share option.</p>
+            </div>
+
+            <div id="shareLockSection" class="hidden">
+                <p class="instruction-heading">Step 3: Share this Offer!</p>
+                <p id="shareTimerMessage" class="timer-msg">Preparing share button...</p>
+                <button id="whatsappShareButton" class="cta-button share-button" disabled>Share on WhatsApp</button>
+                <p id="shareCountDisplay" class="share-count">Shares: 0/5</p>
+                <p class="share-instruction">
+                    <small>Click the button above and share with 5 WhatsApp groups/friends. Your shares will count after the button activates!</small>
+                </p>
+            </div>
+
+            <div id="directLinkSection" class="direct-link-section hidden">
+                <p class="instruction-heading">Step 4: Visit Our Partner Site!</p>
+                <p>You're almost there! To get your voucher, you need to visit our partner site for at least <span id="visitTimeRequiredDisplay">30</span> seconds.</p>
+                <button id="visitSiteButton" class="cta-button visit-site-button" disabled><i class="fas fa-lock"></i> Please Wait...</button>
+                <p id="visitSiteTimerDisplay" class="timer-display hidden">Time Left: <span id="visitSiteCountdown"></span> seconds</p>
+                <p class="visit-site-instruction">
+                    <small>Once the button activates, click it! A new tab will open. Stay on that tab for the required time. Come back here when the timer finishes!</small>
+                </p>
+            </div>
+
+            <div id="spinWheelContainer" class="spin-wheel-container hidden">
+                <p class="instruction-heading">Step 5: Spin the Wheel & Win!</p>
+                <h3 id="spinWheelTitle">It's Your Lucky Spin!</h3>
+                <canvas id="spinWheelCanvas" width="400" height="400" style="max-width: 100%; height: auto;"></canvas>
+                <button id="spinButton" class="cta-button spin-button">Spin Now!</button>
+                <p id="spinResult" class="spin-result"></p>
+
+                <div id="noWinMessage" class="regret-section hidden">
+                    <h3>Oops! Better Luck Next Time! 😔</h3>
+                    <p>Unfortunately, you didn't win a voucher this time. Don't worry, you can try again tomorrow!</p>
+                    <p class="cooldown-instruction hidden">You can spin again in: <span id="spinCooldownTimerApology"></span></p>
+                </div>
+
+                <div id="winnerSection" class="winner-section hidden">
+                    <h4>Congratulations! Your Secret Code:</h4>
+                    <div class="code-display">
+                        <input type="text" id="secretCode" readonly>
+                        <button id="copyCodeBtn" class="action-button">Copy Code</button>
+                    </div>
+                    <p class="code-instruction">
+                        <small>Your code has been copied! Now, click below to claim your prize.</small>
+                    </p>
+                    <a id="telegramSubmitLink" href="#" target="_blank" class="cta-button telegram-submit-btn">
+                        <i class="fab fa-telegram-plane"></i> Go to Telegram ID & Paste Code
+                    </a>
+                    <p class="cooldown-instruction hidden">You can spin again in: <span id="spinCooldownTimerWinner"></span></p>
+                </div>
+
+                <p id="spinCooldownMessage" class="spin-result hidden">You can spin again in: <span id="spinCooldownTimerMain"></span></p>
+            </div>
+        </section>
+
+        <section id="regretMessage" class="regret-section hidden">
+            <h2>Oops! All Vouchers Claimed! 😭</h2>
+            <p>Better luck next time! Make sure to follow our channels for future exciting offers.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RJ Smart Finance. All rights reserved. <a href="#">Terms & Conditions</a></p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-  </html>
+</html>
