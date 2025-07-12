@@ -1,378 +1,508 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-:root {
-    --primary-color: #ff6f61; /* Rakhi Red/Orange */
-    --secondary-color: #ffeeba; /* Light Yellow/Gold */
-    --accent-color: #4CAF50; /* Green for success */
-    --text-color: #333;
-    --bg-color: #fce4ec; /* Light Pink/Creamy background */
-    --card-bg: #ffffff;
-    --border-color: #ddd;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-medium: rgba(0, 0, 0, 0.2);
-}
-
+/* General Body Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    box-sizing: border-box;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .container {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 8px 16px var(--shadow-medium);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    box-sizing: border-box;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    overflow: hidden; /* To contain any overflows from spin wheel transition */
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
-header h1 {
-    color: var(--primary-color);
-    font-size: 2.2em;
-    margin-bottom: 10px;
-    line-height: 1.2;
-}
-
-header p {
-    font-size: 1.1em;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.countdown-text {
-    font-weight: 600;
-    color: var(--primary-color);
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.info-section {
-    background-color: var(--secondary-color);
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 4px var(--shadow-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #6a4900; /* Darker yellow text */
-}
-
-.info-section .fas {
-    margin-right: 10px;
-    color: #ff9800; /* Orange icon */
-}
-
-.regret-message {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-.regret-message .fas {
-    margin-right: 10px;
-    color: #fff;
-}
-
-
-.action-section {
-    background-color: #f9f9f9;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 8px var(--shadow-light);
-}
-
-.action-section h2 {
-    color: var(--primary-color);
-    font-size: 1.8em;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.action-section p {
-    font-size: 1.05em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn .fas, .btn .fab {
-    margin-right: 8px;
-}
-
-.primary-btn {
-    background-color: var(--primary-color);
-}
-
-.primary-btn:hover:not(:disabled) {
-    background-color: #e65c50;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-}
-
-.primary-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.7;
-    box-shadow: none;
-}
-
-.primary-btn.unlocked {
-    background-color: var(--accent-color);
-    cursor: default;
-    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-}
-.primary-btn.unlocked:hover {
-     transform: none;
-     background-color: var(--accent-color);
-}
-
-
-.spin-btn {
-    margin-top: 25px;
-    width: 200px;
-    height: 60px; /* Make spin button larger */
-    font-size: 1.3em;
-}
-
-.spin-btn i {
-    font-size: 1.5em;
-    margin-right: 10px;
-}
-
-.highlight {
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-.share-count {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #007bff; /* Blue for info */
-}
-
-.share-timer-message, .visit-timer-message {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.countdown-timer {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 1.1em;
-}
-
-/* Spin Wheel Specific Styles */
-.wheel-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 0 5px var(--primary-color), 0 0 0 10px #f0a09a; /* Border effect */
-}
-
-#spinWheelCanvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    transition: transform 0s ease-out; /* Reset transition on load */
-    transform: rotate(0deg); /* Initial state */
-}
-
-.spin-result {
-    font-size: 1.4em;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin-top: 20px;
-}
-
-.message-box {
-    background-color: #e9f5e9; /* Light green for success */
-    border: 1px solid #c3e6cb;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 25px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.message-box.no-win {
-    background-color: #f8d7da; /* Light red for no win */
-    border-color: #f5c6cb;
-    color: #721c24;
-}
-
-.message-box.winner {
-    background-color: #d4edda; /* Deeper green for winner */
-    border-color: #c3e6cb;
-    color: #155724;
-}
-
-.message-box h3 {
-    font-size: 1.6em;
-    margin-top: 0;
-    color: inherit; /* Use parent color */
-}
-
-.message-box .fas {
-    margin-right: 10px;
-}
-
-.code-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
-#secretCode {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: 2px dashed var(--primary-color);
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 600;
-    text-align: center;
+h1, h2, h3, h4 {
     color: #333;
-    background-color: #fff;
-    cursor: text;
-    outline: none;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.copy-btn {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 15px;
-    margin-left: 10px;
-    border-radius: 8px;
-    font-size: 1em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.copy-btn:hover {
-    background-color: #e65c50;
-}
-
-.redeem-instruction {
-    font-size: 1em;
-    margin-top: 20px;
-}
-
-.telegram-link-btn {
-    background-color: #0088cc; /* Telegram blue */
-    margin-top: 10px;
-    display: inline-flex;
-    padding: 10px 20px;
-    font-size: 1em;
-}
-.telegram-link-btn:hover {
-    background-color: #007bb5;
-}
-
-.cooldown-message {
-    background-color: #fff3cd; /* Light warning yellow */
-    border: 1px solid #ffeeba;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 20px;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #856404;
-}
-
-.cooldown-message span {
-    color: var(--primary-color);
+p {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .hidden {
     display: none !important;
 }
 
-footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    color: #777;
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(to right, #ff6f61, #ff9a8d);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/clean-textile.png'); /* Subtle texture */
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.hero-banner h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-banner .subtitle {
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    color: #eee;
+    position: relative;
+    z-index: 2;
+}
+
+.festival-img {
+    max-width: 250px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.image-attribution {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.image-attribution a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+}
+
+.image-attribution a:hover {
+    text-decoration: underline;
+}
+
+/* Section Styling */
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.instruction-heading {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #ff6f61; /* Main accent color */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Countdown & Urgency */
+.countdown {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ff6f61;
+    margin-bottom: 15px;
+}
+
+.voucher-status {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Affiliate Section */
+.affiliate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center; /* Center items in the grid */
+    align-items: stretch; /* Make items fill the grid cell height */
+}
+
+.affiliate-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-height: 80px; /* Ensure a minimum height for uniformity */
+}
+
+.affiliate-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.affiliate-button span {
+    text-align: center;
     font-size: 0.9em;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
+/* Specific affiliate button colors (examples) */
+.flipkart { background-color: #2874f0; }
+.ajio { background-color: #27ae60; } /* Adjusted green for Ajio */
+.myntra { background-color: #eb4f94; }
+.shopsy { background-color: #ff9100; } /* Orange */
+.buykaro { background-color: #7f8c8d; } /* Grey */
+.myeazyloan { background-color: #34495e; } /* Dark Blue/Grey */
+.reliance-digital { background-color: #007bff; } /* Blue */
+.dot-key { background-color: #8e44ad; } /* Purple */
+.bold-care { background-color: #c0392b; } /* Red */
+.kiro-beauty { background-color: #d35400; } /* Dark Orange */
+.kapiva { background-color: #27ae60; } /* Green, matching Ajio for simplicity */
 
-    .container {
-        padding: 20px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
 
-    header h1 {
+/* General CTA Buttons */
+.cta-button {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: #ff6f61; /* Primary CTA color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3);
+}
+
+.cta-button:hover:not(:disabled) {
+    background-color: #e65c50;
+    transform: translateY(-2px);
+}
+
+.cta-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.action-button {
+    background-color: #28a745; /* Green for success/action */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #218838;
+}
+
+/* Social Channels */
+.channel-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 20px;
+}
+
+.whatsapp-channel-btn {
+    background-color: #25d366;
+}
+
+.whatsapp-channel-btn:hover:not(:disabled) {
+    background-color: #1da851;
+}
+
+.telegram-channel-btn {
+    background-color: #0088cc;
+}
+
+.telegram-channel-btn:hover:not(:disabled) {
+    background-color: #006b9b;
+}
+
+.social-channels .cta-button i {
+    margin-right: 8px;
+}
+
+/* Voucher Section */
+.voucher-section {
+    padding: 30px;
+}
+
+.timer-msg {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.share-count {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+.share-instruction small,
+.visit-site-instruction small,
+.code-instruction small,
+.cooldown-instruction small {
+    display: block; /* Make small tag take full width */
+    margin-top: 10px;
+    color: #777;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+/* Direct Link Section */
+.direct-link-section {
+    padding: 30px;
+}
+
+.direct-link-section h3 {
+    color: #ff6f61;
+}
+
+.visit-site-button {
+    background-color: #4CAF50; /* Green for "Go" */
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.visit-site-button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.visit-site-button.unlocked {
+    background-color: #28a745;
+    cursor: default;
+}
+
+.visit-site-button.unlocked:hover {
+    background-color: #28a745; /* No hover effect after unlock */
+    transform: none;
+}
+
+.visit-site-button i {
+    margin-right: 8px;
+}
+
+.timer-display {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007bff; /* Blue for timer */
+    margin-top: 15px;
+}
+
+/* Spin Wheel */
+.spin-wheel-container {
+    padding: 30px;
+}
+
+#spinWheelCanvas {
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #ff6f61; /* Border around the wheel */
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    /* Transition is handled by JS for spin animation */
+}
+
+.spin-button {
+    background-color: #007bff; /* Blue for spin button */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.spin-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.spin-result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #ff6f61;
+    margin-top: 20px;
+}
+
+.winner-section {
+    background-color: #e9f7ef;
+    border: 1px solid #d4edda;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.winner-section h4 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.code-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#secretCode {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 2px dashed #28a745;
+    border-radius: 5px;
+    background-color: #f3fdf6;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    color: #28a745;
+    outline: none;
+    max-width: 250px; /* Limit width */
+}
+
+.telegram-submit-btn {
+    background-color: #0088cc;
+    margin-top: 10px;
+}
+
+.telegram-submit-btn:hover:not(:disabled) {
+    background-color: #006b9b;
+}
+
+/* Regret Message (Used for No Win and All Vouchers Claimed) */
+.regret-section {
+    background-color: #ffe6e6;
+    border: 1px solid #ffcccc;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.regret-section h2, .regret-section h3 {
+    color: #dc3545;
+}
+
+.regret-section p {
+    color: #6c757d;
+}
+
+/* Cooldown instruction style */
+p.cooldown-instruction {
+    font-size: 0.95em;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: #eee;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-banner h1 {
+        font-size: 2em;
+    }
+    .hero-banner .subtitle {
+        font-size: 1em;
+    }
+    .countdown {
         font-size: 1.8em;
     }
-
-    .action-section h2 {
-        font-size: 1.5em;
+    .affiliate-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
-
-    .btn {
-        width: 100%;
+    .affiliate-button {
+        padding: 10px 5px;
+        min-height: 70px;
+    }
+    .affiliate-button span {
+        font-size: 0.8em;
+    }
+    .cta-button {
+        padding: 12px 20px;
         font-size: 1em;
-        padding: 10px 20px;
     }
-
-    .copy-btn {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 100%;
+    .channel-buttons {
+        flex-direction: column;
+        align-items: center;
     }
-
-    .code-container {
+    #spinWheelCanvas {
+        width: 100%; /* Ensure canvas scales */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .code-display {
         flex-direction: column;
     }
     #secretCode {
-        width: calc(100% - 30px); /* Adjust for padding */
-        margin-bottom: 10px;
+        width: 100%;
+        max-width: 300px; /* Adjust max-width for better mobile fit */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        padding: 30px 10px;
+    }
+    .hero-banner h1 {
+        font-size: 1.8em;
+    }
+    .hero-banner .subtitle {
+        font-size: 0.9em;
+    }
+    .countdown {
+        font-size: 1.5em;
+    }
+    .affiliate-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on very small screens */
+    }
+    .cta-button {
+        width: 90%; /* Make buttons full width */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .code-display {
+        gap: 5px;
     }
 }
