@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha Bandhan Special Offer!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Spin the wheel and get exciting Raksha Bandhan shopping vouchers! Limited time offer.">
+    <meta name="keywords" content="Raksha Bandhan, vouchers, shopping, offer, discount, spin wheel, Flipkart, Myntra, Ajio, festival">
+    <meta name="author" content="Your Name/Company">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/index.html"> <meta property="og:title" content="Raksha Bandhan Special: Spin to Win Vouchers!">
+    <meta property="og:description" content="Don't miss out! Get assured shopping vouchers worth ₹50 to ₹500 for Raksha Bandhan. Limited stock!">
+    <meta property="og:image" content="https://yourwebsite.com/images/rakhi_banner.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/index.html"> <meta property="twitter:title" content="Raksha Bandhan Special: Spin to Win Vouchers!">
+    <meta property="twitter:description" content="Don't miss out! Get assured shopping vouchers worth ₹50 to ₹500 for Raksha Bandhan. Limited stock!">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/rakhi_banner.jpg"> </head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎁 Raksha Bandhan Festival Special! 🎉</h1>
+            <p>Don't miss this limited-time offer!</p>
+            <p class="countdown-text">Offer Ends in: <span id="countdown">Loading...</span></p>
+        </header>
+
+        <section class="info-section">
+            <div class="voucher-status" id="voucherSection">
+                <i class="fas fa-ticket-alt"></i> Total Vouchers Claimed: <span id="voucherStatus">Loading...</span>
+            </div>
+            <p class="regret-message hidden" id="regretMessage">
+                <i class="fas fa-exclamation-triangle"></i> Oh no! All vouchers for today have been claimed. Check back tomorrow!
+            </p>
+        </section>
+
+        <section class="action-section" id="waChannelSection">
+            <h2>Step 1: Join Our WhatsApp Channel</h2>
+            <p>Join our official WhatsApp channel to unlock the next step.</p>
+            <button id="whatsappChannelBtn" class="btn primary-btn"><i class="fab fa-whatsapp"></i> Join WhatsApp Channel</button>
+        </section>
+
+        <section class="action-section hidden" id="tgChannelSection">
+            <h2>Step 2: Join Our Telegram Channel</h2>
+            <p>Join our Telegram channel to unlock the sharing step.</p>
+            <button id="telegramChannelBtn" class="btn primary-btn"><i class="fab fa-telegram-plane"></i> Join Telegram Channel</button>
+        </section>
+
+        <section class="action-section hidden" id="shareLockSection">
+            <h2>Step 3: Share with Friends & Family!</h2>
+            <p>Share this exciting offer with <span class="highlight">5 friends/groups on WhatsApp</span> to unlock the next step.</p>
+            <p class="share-count" id="shareCountDisplay">Shares: 0/5</p>
+            <p class="share-timer-message" id="shareTimerMessage">Click to Share!</p>
+            <button id="whatsappShareButton" class="btn primary-btn"><i class="fab fa-whatsapp"></i> Share on WhatsApp</button>
+        </section>
+
+        <section class="action-section hidden" id="directLinkSection">
+            <h2>Step 4: Visit Our Partner Site</h2>
+            <p>Visit our partner's website for at least <span id="visitTimeRequiredDisplay">30</span> seconds to unlock the Spin Wheel!</p>
+            <p class="visit-timer-message hidden" id="visitSiteTimerDisplay">
+                Time remaining: <span class="countdown-timer" id="visitSiteCountdown"></span>s
+            </p>
+            <button id="visitSiteButton" class="btn primary-btn">Click to Visit Site & Unlock Spin</button>
+        </section>
+
+        <section class="action-section hidden" id="spinWheelContainer">
+            <h2 id="spinWheelTitle">It's Your Lucky Spin!</h2>
+            <div class="wheel-container">
+                <canvas id="spinWheelCanvas" width="300" height="300"></canvas>
+                <button id="spinButton" class="btn primary-btn spin-btn"><i class="fas fa-hand-pointer"></i> Spin Now!</button>
+            </div>
+            <p class="spin-result" id="spinResult"></p>
+
+            <div class="cooldown-message hidden" id="spinCooldownMessage">
+                <p>You can spin again in: <span id="spinCooldownTimerMain"></span></p>
+            </div>
+
+            <div class="message-box no-win hidden" id="noWinMessage">
+                <h3><i class="fas fa-sad-tear"></i> Better Luck Next Time!</h3>
+                <p>Unfortunately, you didn't win a voucher this time.</p>
+                <p>Don't worry, you can try again tomorrow!</p>
+                <p class="cooldown-instruction hidden">Come back in: <span id="spinCooldownTimerApology"></span></p>
+            </div>
+
+            <div class="message-box winner hidden" id="winnerSection">
+                <h3><i class="fas fa-gift"></i> Congratulations! You Won!</h3>
+                <p>Your exclusive Raksha Bandhan shopping voucher code:</p>
+                <div class="code-container">
+                    <input type="text" id="secretCode" readonly>
+                    <button id="copyCodeBtn" class="btn copy-btn"><i class="fas fa-copy"></i> Copy Code</button>
+                </div>
+                <p class="redeem-instruction">
+                    Click here to redeem your voucher on Telegram:
+                    <a id="telegramSubmitLink" href="#" target="_blank" class="btn telegram-link-btn"><i class="fab fa-telegram-plane"></i> Redeem Now!</a>
+                </p>
+                <p class="cooldown-instruction hidden">You can spin again tomorrow! Come back in: <span id="spinCooldownTimerWinner"></span></p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Raksha Bandhan Offer. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
