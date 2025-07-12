@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #ff6f61; /* Rakhi Red/Orange */
+    --secondary-color: #ffeeba; /* Light Yellow/Gold */
+    --accent-color: #4CAF50; /* Green for success */
+    --text-color: #333;
+    --bg-color: #fce4ec; /* Light Pink/Creamy background */
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-medium);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden; /* To contain any overflows from spin wheel transition */
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.countdown-text {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.info-section {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #6a4900; /* Darker yellow text */
+}
+
+.info-section .fas {
+    margin-right: 10px;
+    color: #ff9800; /* Orange icon */
+}
+
+.regret-message {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.regret-message .fas {
+    margin-right: 10px;
+    color: #fff;
+}
+
+
+.action-section {
+    background-color: #f9f9f9;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.action-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.action-section p {
+    font-size: 1.05em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn .fas, .btn .fab {
+    margin-right: 8px;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #e65c50;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.primary-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.primary-btn.unlocked {
+    background-color: var(--accent-color);
+    cursor: default;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+.primary-btn.unlocked:hover {
+     transform: none;
+     background-color: var(--accent-color);
+}
+
+
+.spin-btn {
+    margin-top: 25px;
+    width: 200px;
+    height: 60px; /* Make spin button larger */
+    font-size: 1.3em;
+}
+
+.spin-btn i {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.share-count {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #007bff; /* Blue for info */
+}
+
+.share-timer-message, .visit-timer-message {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.countdown-timer {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+/* Spin Wheel Specific Styles */
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 5px var(--primary-color), 0 0 0 10px #f0a09a; /* Border effect */
+}
+
+#spinWheelCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0s ease-out; /* Reset transition on load */
+    transform: rotate(0deg); /* Initial state */
+}
+
+.spin-result {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 20px;
+}
+
+.message-box {
+    background-color: #e9f5e9; /* Light green for success */
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-box.no-win {
+    background-color: #f8d7da; /* Light red for no win */
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.message-box.winner {
+    background-color: #d4edda; /* Deeper green for winner */
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.message-box h3 {
+    font-size: 1.6em;
+    margin-top: 0;
+    color: inherit; /* Use parent color */
+}
+
+.message-box .fas {
+    margin-right: 10px;
+}
+
+.code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#secretCode {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    cursor: text;
+    outline: none;
+}
+
+.copy-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 8px;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.copy-btn:hover {
+    background-color: #e65c50;
+}
+
+.redeem-instruction {
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.telegram-link-btn {
+    background-color: #0088cc; /* Telegram blue */
+    margin-top: 10px;
+    display: inline-flex;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+.telegram-link-btn:hover {
+    background-color: #007bb5;
+}
+
+.cooldown-message {
+    background-color: #fff3cd; /* Light warning yellow */
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #856404;
+}
+
+.cooldown-message span {
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .action-section h2 {
+        font-size: 1.5em;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .copy-btn {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .code-container {
+        flex-direction: column;
+    }
+    #secretCode {
+        width: calc(100% - 30px); /* Adjust for padding */
+        margin-bottom: 10px;
+    }
+}
